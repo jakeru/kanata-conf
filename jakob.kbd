@@ -1,0 +1,72 @@
+(defcfg
+  process-unmapped-keys no
+  danger-enable-cmd yes
+)
+
+;; A basic layout that should fit a fair amount of keyboards.
+;; We only care about the keys we actually plan use.
+(defsrc
+  esc     1       2       3       4       5       6       7       8       9       0
+  tab     q       w       e       r       t       y       u       i       o       p       [
+  caps    a       s       d       f       g       h       j       k       l       ;       '
+  lsft    z       x       c       v       b       n       m       ,       .       /
+  lmet    lalt    spc     ralt
+)
+
+(defvar
+  tap-timeout 200
+  tt $tap-timeout
+  hold-timeout 200
+  ht $hold-timeout
+  one-shot-timeout 1000
+  ost $one-shot-timeout
+)
+
+(defalias
+  ;; Map caps lock to esc when tapped and lctrl when pressed.
+  caps (tap-hold-press $tt $ht esc lctrl)
+  ;; Map lmet to insert a single symbol when tapped and lmet when pressed.
+  lmet (tap-hold-press $tt $ht (one-shot $ost (layer-while-held sym)) lmet)
+  ;; Map lalt to nav layer while held.
+  lalt (layer-while-held nav)
+  ;; Map ralt to enter when tapped.
+  ralt (tap-hold $tt $ht ret ralt)
+  ;; Keep sym layer active when held.
+  sym (layer-while-held sym)
+  ;; Switch to Swedish keyboard layout.
+  ;; Note that sym layer will be broken when we are in this mode.
+  lse (cmd setxkbmap -layout se)
+  ;; Switch to US keyboard layout.
+  lus (cmd setxkbmap -layout us)
+  ;; Some more symbols that need shift to be produced.
+  lcbr S-[
+  rcbr S-]
+  lpar S-9
+  rpar S-0
+  pipe S-\
+)
+
+(deflayer default
+  _       _       _       _       _       _       _       _       _       _       _
+  _       _       _       _       _       _       _       _       _       _       _       _
+  @caps   _       _       _       _       _       _       _       _       _       _       _
+  _       _       _       _       _       _       _       _       _       _       _
+  @lmet   @lalt   _       @ralt
+)
+
+(deflayer nav
+  _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10  
+  _       _       @lus    end     _       tab     _       pgup    _       _       _       _
+  _       home    @lse    del     tab     _       left    down    up      rght    _       grv
+  _       _       _       _       _       _       bspc    pgdn    _       _       -
+  _       _       ret     _
+)
+
+(deflayer sym
+  _       _       _       _       _       _       _       _       _       _       _    
+  _       _       _       _       _       _       =       7       8       9       +       _
+  _       \       @pipe   @lcbr   @lpar   [       _       4       5       6       -       _
+  _       _       _       @rcbr   @rpar   ]       _       1       2       3       -
+  _       @sym    _       0
+)
+
