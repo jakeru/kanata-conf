@@ -51,6 +51,11 @@
   cut C-x
   copy C-c
   pste C-v
+  cwc (caps-word-custom
+    5000
+    (- a b c d e f g h i j k l m n o p q r s t u v w x y z [ ' ;)
+    ()
+  )
 )
 
 (deflayer default
@@ -63,8 +68,8 @@
 
 (deflayer nav
   _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10  
-  _       _       @lus    end     _       tab     _       pgup    _       _       _       _
-  _       home    @lse    del     pgdn    pgup    left    down    up      rght    _       grv
+  _       _       @lus    end     @stab   tab     _       pgup    _       _       _       _
+  @cwc    home    @lse    del     pgdn    pgup    left    down    up      rght    _       grv
   _       _       @cut    @copy   @pste   _       bspc    pgdn    _       _       -
   _       _       ret     _
 )
