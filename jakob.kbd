@@ -41,9 +41,16 @@
   ;; Some more symbols that need shift to be produced.
   lcbr S-[
   rcbr S-]
+  ast S-8
   lpar S-9
   rpar S-0
   pipe S-\
+  ldsh S-min
+  tld S-grv
+  stab S-tab
+  cut C-x
+  copy C-c
+  pste C-v
 )
 
 (deflayer default
@@ -57,16 +64,16 @@
 (deflayer nav
   _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10  
   _       _       @lus    end     _       tab     _       pgup    _       _       _       _
-  _       home    @lse    del     tab     _       left    down    up      rght    _       grv
-  _       _       _       _       _       _       bspc    pgdn    _       _       -
+  _       home    @lse    del     pgdn    pgup    left    down    up      rght    _       grv
+  _       _       @cut    @copy   @pste   _       bspc    pgdn    _       _       -
   _       _       ret     _
 )
 
 (deflayer sym
   _       _       _       _       _       _       _       _       _       _       _    
   _       _       _       _       _       _       =       7       8       9       +       _
-  _       \       @pipe   @lcbr   @lpar   [       _       4       5       6       -       _
-  _       _       _       @rcbr   @rpar   ]       _       1       2       3       -
-  _       @sym    _       0
+  _       \       @pipe   @lcbr   @lpar   [       @ast    4       5       6       -       _
+  _       _       _       @rcbr   @rpar   ]       @tld    1       2       3       -
+  _       @sym    @ldsh   0
 )
 
