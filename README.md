@@ -20,11 +20,6 @@ increasing I decided to simplify things.
 In this Kanata configuration my idea is to use the same configuration for each
 keyboard.
 
-Also, I simplify things by not including any support for the Swedish layout.
-Instead I just use the `setxkbmap` command to switch layout. By doing so I
-accept that my symbol layer only work when I use the US layout. But I think it
-is acceptable.
-
 ## Description
 
 The idea with my `defsrc` layer is to only include (more or less) the keys I
@@ -41,11 +36,11 @@ The next key is the left meta key and I use it as super key for my window
 manager [i3](https://i3wm.org/). By tapping it I can insert one symbol from my
 symbol layer.
 
-Then comes the left alt key. In the applications I use I have decided that that
-key is not very important. In cases i need it I can press the right alt key
-instead. So when I press this key I reach my navigation layer. In that layer
+Then comes the left alt key. In the applications I use I have noticed that that
+key is not very important. In cases I need it I can press the right alt key
+instead. When I press the left alt key I reach my navigation layer. In that layer
 the vim navigation keys works as arrows and I can access other buttons such as
-home, end, delete, backspace and enter.
+home, end, delete, backspace and enter. I can also copy and paste.
 
 The next key is the space key. I use it for space. And as enter if left alt is
 pressed.
@@ -55,5 +50,5 @@ right alt when pressed.
 
 ## To Do list
 
-- Get Copy and Paste keys to work.
 - Move tab to a more easy accessible location.
+- Fix the eacute symbol.

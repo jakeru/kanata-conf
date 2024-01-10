@@ -1,6 +1,5 @@
 (defcfg
   process-unmapped-keys no
-  danger-enable-cmd yes
 )
 
 ;; A basic layout that should fit a fair amount of keyboards.
@@ -25,19 +24,17 @@
 (defalias
   ;; Map caps lock to esc when tapped and lctrl when pressed.
   caps (tap-hold-press $tt $ht esc lctrl)
-  ;; Map lmet to insert a single symbol when tapped and lmet when pressed.
+  ;; Map lmet to insert a symbol when tapped and lmet while held.
   lmet (tap-hold-press $tt $ht (one-shot $ost (layer-while-held sym)) lmet)
-  ;; Map lalt to nav layer while held.
-  lalt (layer-while-held nav)
-  ;; Map ralt to enter when tapped.
+  ;; Map lalt to insert a symbol when tapped and nav layer while held.
+  lalt (tap-hold-press $tt $ht (one-shot $ost (layer-while-held sym)) (layer-while-held nav))
+  ;; Map ralt to enter when tapped and ralt while held.
   ralt (tap-hold $tt $ht ret ralt)
   ;; Keep sym layer active when held.
   sym (layer-while-held sym)
-  ;; Switch to Swedish keyboard layout.
-  ;; Note that sym layer will be broken when we are in this mode.
-  lse (cmd setxkbmap -layout se)
-  ;; Switch to US keyboard layout.
-  lus (cmd setxkbmap -layout us)
+  ;; Switch language
+  lse (layer-switch swedish)
+  lus (layer-switch default)
   ;; Some more symbols that need shift to be produced.
   lcbr S-[
   rcbr S-]
@@ -48,14 +45,24 @@
   ldsh S-min
   tld S-grv
   stab S-tab
-  cut C-x
-  copy C-c
-  pste C-v
+  copy (arbitrary-code 133)
+  pste (arbitrary-code 135)
   cwc (caps-word-custom
     5000
     (- a b c d e f g h i j k l m n o p q r s t u v w x y z [ ' ;)
     ()
   )
+  ;; Character å
+  aring (macro comp a a)
+  ;; Character ä
+  auml (macro comp S-' a)
+  ;; Character ö
+  ouml (macro comp S-' o)
+  ;; Character è
+  egrave (macro comp grv e)
+  ;; eacute (macro comp grv e)
+  ;; Character : (very useful when using Swedish layout)
+  colon S-;
 )
 
 (deflayer default
@@ -67,18 +74,25 @@
 )
 
 (deflayer nav
-  _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10  
-  _       _       @lus    end     @stab   tab     _       pgup    _       _       _       _
-  @cwc    home    @lse    del     pgdn    pgup    left    down    up      rght    _       grv
-  _       _       @cut    @copy   @pste   _       bspc    pgdn    _       _       -
+  _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10
+  _       _       @lus    end     @stab   tab     @copy   pgup    _       _       @pste   _
+  @cwc    home    @lse    del     pgdn    pgup    left    down    up      rght    @colon      grv
+  _       _       _       @copy   @pste   _       bspc    pgdn    _       _       -
   _       _       ret     _
 )
 
 (deflayer sym
-  _       _       _       _       _       _       _       _       _       _       _    
-  _       _       _       _       _       _       =       7       8       9       +       _
+  _       _       _       _       _       _       _       _       _       _       _
+  _       _       _       @egrave _       _       =       7       8       9       +       _
   _       \       @pipe   @lcbr   @lpar   [       @ast    4       5       6       -       _
   _       _       _       @rcbr   @rpar   ]       @tld    1       2       3       -
   _       @sym    @ldsh   0
 )
 
+(deflayer swedish
+  _       _       _       _       _       _       _       _       _       _       _
+  _       _       _       _       _       _       _       _       _       _       _      @aring
+  @caps   _       _       _       _       _       _       _       _       _       @ouml  @auml
+  _       _       _       _       _       _       _       _       _       _       _
+  @lmet   @lalt   _       @ralt
+)
