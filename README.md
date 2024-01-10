@@ -51,4 +51,3 @@ right alt when pressed.
 ## To Do list
 
 - Move tab to a more easy accessible location.
-- Fix the eacute symbol.

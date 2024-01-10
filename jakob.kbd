@@ -52,15 +52,18 @@
     (- a b c d e f g h i j k l m n o p q r s t u v w x y z [ ' ;)
     ()
   )
+  ;; Characters are made using Compose from:
+  ;; /usr/share/X11/locale/en_us.UTF-8/Compose
   ;; Character å
   aring (macro comp a a)
   ;; Character ä
   auml (macro comp S-' a)
   ;; Character ö
   ouml (macro comp S-' o)
-  ;; Character è
+  ;; Character é - used in the Swedish word "idé" (idea).
+  eacute (macro comp ' e)
+  ;; Character è (not sure if I need this)
   egrave (macro comp grv e)
-  ;; eacute (macro comp grv e)
   ;; Character : (very useful when using Swedish layout)
   colon S-;
 )
@@ -83,7 +86,7 @@
 
 (deflayer sym
   _       _       _       _       _       _       _       _       _       _       _
-  _       _       _       @egrave _       _       =       7       8       9       +       _
+  _       _       _       @eacute _       _       =       7       8       9       +       _
   _       \       @pipe   @lcbr   @lpar   [       @ast    4       5       6       -       _
   _       _       _       @rcbr   @rpar   ]       @tld    1       2       3       -
   _       @sym    @ldsh   0
