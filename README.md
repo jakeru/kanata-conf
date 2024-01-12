@@ -17,13 +17,12 @@ In my [KMonad configuration](https://github.com/jakeru/kmonad-config) I have
 one configuration for each keyboard. Since number of keyboards is always
 increasing I decided to simplify things.
 
-In this Kanata configuration my idea is to use the same configuration for each
-keyboard.
+In this Kanata configuration the same configuration is used for all keyboards.
 
 ## Description
 
 The idea with my `defsrc` layer is to only include (more or less) the keys I
-intend to actually use.
+intend to actually use and that are available on all my keyboards.
 
 Caps lock works as escape when tapped and control when pressed. This is
 something that is very hard to live without.
