@@ -36,14 +36,27 @@
   lse (layer-switch swedish)
   lus (layer-switch default)
   ;; Some more symbols that need shift to be produced.
+  ;; Symbol {
   lcbr S-[
+  ;; Symbol }
   rcbr S-]
+  ;; Symbol *
   ast S-8
+  ;; Symbol ^
+  xor S-6
+  ;; Symbol $
+  dlr S-4
+  ;; Symbol (
   lpar S-9
+  ;; Symbol )
   rpar S-0
+  ;; Sybmol |
   pipe S-\
+  ;; Symbol _
   ldsh S-min
+  ;; Symbol ~
   tld S-grv
+  ;; Shift+tab
   stab S-tab
   copy (arbitrary-code 133)
   pste (arbitrary-code 135)
