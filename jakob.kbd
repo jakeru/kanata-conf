@@ -60,11 +60,14 @@
   stab S-tab
   copy (arbitrary-code 133)
   pste (arbitrary-code 135)
-  cwc (caps-word-custom
-    5000
-    (- a b c d e f g h i j k l m n o p q r s t u v w x y z [ ' ;)
-    ()
-  )
+  ;; Caps lock until word if tapped and ctrl if held.
+  cwc (tap-hold-press $tt $ht
+      (caps-word-custom
+        5000
+        (- a b c d e f g h i j k l m n o p q r s t u v w x y z [ ' ;)
+        ()
+      )
+      lctrl)
   ;; Characters are made using Compose from:
   ;; /usr/share/X11/locale/en_us.UTF-8/Compose
   ;; Character å
