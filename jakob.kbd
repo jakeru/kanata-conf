@@ -91,7 +91,7 @@
 
 (deflayer nav
   _       f1      f2      f3      f4      f5      f6      f7      f8      f9      f10
-  _       _       @lus    end     @stab   tab     @copy   pgup    _       _       @pste   _
+  _       _       @lus    end     @stab   tab     @copy   pgup    @stab   tab       @pste   _
   @cwc    home    @lse    del     pgdn    pgup    left    down    up      rght    @colon      grv
   _       _       _       @copy   @pste   _       bspc    pgdn    _       _       -
   _       _       ret     _
